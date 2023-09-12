@@ -1,12 +1,11 @@
 require("express-async-errors")
-
-
+const migrationsRun = require("./database/sqlite/migrations");
 const AppError = require("./utils/AppError")
-//É como se eu tivesse pegando toda a pasta do express em node_modules e despejando na variavel
-const express = require("express");
-//iniciando o express para utilizar ele.
 
+const express = require("express");
 const routes = require("./routes")
+
+migrationsRun();
 
 const app = express();
 app.use(express.json());
